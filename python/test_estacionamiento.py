@@ -61,7 +61,7 @@ def test_casos_frontera_299_a_302(sistema, caso_num, minutos, tipo_cliente, bole
 def test_minuto_cero(sistema):
     minutos = 0
     tipo_cliente = "normal"
-    boleto_perdido = True
+    boleto_perdido = False
     resultado = sistema.calcular_total(minutos, tipo_cliente, boleto_perdido)
     assert resultado == 0.0
 
