@@ -161,7 +161,7 @@ class EstacionamientoTest {
         boolean boletoPerdido = false;
         IllegalArgumentException excepcion = assertThrows(
             IllegalArgumentException.class,
-            () -> sistema.calcularTotal(minutos, tipoCliente, boletoPerdido)
+            () -> sistema.calcularTotal((int)minutos, tipoCliente, boletoPerdido)
         );
         assertEquals("Solo se admiten minutos expresados en números enteros", excepcion.getMessage());
     }
