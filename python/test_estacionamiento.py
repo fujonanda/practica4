@@ -120,12 +120,12 @@ def test_costo_con_decimal(sistema):
     tipo_cliente = "frecuente"
     boleto_perdido = False
     resultado = sistema.calcular_total(minutos, tipo_cliente, boleto_perdido)
-    assert resultado == pytest.approx(85.5, abs=1e-2)
+    assert resultado == pytest.approx(85.5)
 
 
 def test_minutos__con_decimales(sistema):
     minutos = 30.5
     tipo_cliente = "normal"
     boleto_perdido = False
-    with pytest.raises((ValueError, TypeError)):
+    with pytest.raises((ValueError, "Solo se admiten minutos expresados en números enteros")):
         sistema.calcular_total(minutos, tipo_cliente, boleto_perdido)
