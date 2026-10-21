@@ -21,23 +21,49 @@ def test_casos_normales(sistema, caso_num, minutos, tipo_cliente, boleto_perdido
 
 @pytest.mark.parametrize("caso_num, minutos, tipo_cliente, boleto_perdido, esperado",
     [
-        (3, 179, "normal", False, 50.0),
+                (3, 179, "normal", False, 50.0),
         (4, 180, "normal", False, 50.0),
         (5, 181, "normal", False, 65.0),
         (6, 182, "normal", False, 65.0),
+    ]
+)
+def test_casos_frontera_179_a_182(sistema, caso_num, minutos, tipo_cliente, boleto_perdido, esperado):
+    resultado = sistema.calcular_total(minutos, tipo_cliente, boleto_perdido)
+    assert resultado == esperado, f"Fallo en el Caso {caso_num}"
+
+
+@pytest.mark.parametrize("caso_num, minutos, tipo_cliente, boleto_perdido, esperado",
+    [
         (7, 239, "normal", False, 65.0),
         (8, 240, "normal", False, 65.0),
         (9, 241, "normal", False, 80.0),
         (10, 242, "normal", False, 80.0),
+    ]
+)
+def test_casos_frontera_239_a_242(sistema, caso_num, minutos, tipo_cliente, boleto_perdido, esperado):
+    resultado = sistema.calcular_total(minutos, tipo_cliente, boleto_perdido)
+    assert resultado == esperado, f"Fallo en el Caso {caso_num}"
+
+
+@pytest.mark.parametrize("caso_num, minutos, tipo_cliente, boleto_perdido, esperado",
+    [
         (11, 299, "normal", False, 80.0),
         (12, 300, "normal", False, 80.0),
         (13, 301, "normal", False, 95.0),
         (14, 302, "normal", False, 95.0)
     ]
 )
-def test_casos_frontera(sistema, caso_num, minutos, tipo_cliente, boleto_perdido, esperado):
+def test_casos_frontera_299_a_302(sistema, caso_num, minutos, tipo_cliente, boleto_perdido, esperado):
     resultado = sistema.calcular_total(minutos, tipo_cliente, boleto_perdido)
     assert resultado == esperado, f"Fallo en el Caso {caso_num}"
+
+
+def test_minuto_cero(sistema):
+    minutos = 0
+    tipo_cliente = "normal"
+    boleto_perdido = True
+    resultado = sistema.calcular_total(minutos, tipo_cliente, boleto_perdido)
+    assert resultado == 0.0
 
 
 def test_boleto_perdido(sistema):
