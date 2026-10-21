@@ -23,7 +23,7 @@ class EstacionamientoTest {
         "1, 10, normal, false, 0.0",
         "2, 40, normal, false, 20.0"
     })
-    void testCasosNormales(int casoNum, int minutos, String tipoCliente, boolean boletoPerdido, double esperado) {
+    void testCasosNormales(int casoNum, int minutos, String tipoCliente, boolean boletoPerdido, double esperado) { //Viene de R5 y R6
         double resultado = sistema.calcularTotal(minutos, tipoCliente, boletoPerdido);
         assertEquals(esperado, resultado, 0.001, "Fallo en el Caso " + casoNum);
     }
@@ -36,7 +36,7 @@ class EstacionamientoTest {
         "5, 181, normal, false, 65.0",
         "6, 182, normal, false, 65.0"
     })
-    void testCasosFrontera179a182(int casoNum, int minutos, String tipoCliente, boolean boletoPerdido, double esperado) {
+    void testCasosFrontera179a182(int casoNum, int minutos, String tipoCliente, boolean boletoPerdido, double esperado) { //Viene de R7
         double resultado = sistema.calcularTotal(minutos, tipoCliente, boletoPerdido);
         assertEquals(esperado, resultado, 0.001, "Fallo en el Caso " + casoNum);
     }
@@ -49,7 +49,7 @@ class EstacionamientoTest {
         "9, 241, normal, false, 80.0",
         "10, 242, normal, false, 80.0"
     })
-    void testCasosFrontera239a242(int casoNum, int minutos, String tipoCliente, boolean boletoPerdido, double esperado) {
+    void testCasosFrontera239a242(int casoNum, int minutos, String tipoCliente, boolean boletoPerdido, double esperado) { //Viene de R7
         double resultado = sistema.calcularTotal(minutos, tipoCliente, boletoPerdido);
         assertEquals(esperado, resultado, 0.001, "Fallo en el Caso " + casoNum);
     }
@@ -62,14 +62,14 @@ class EstacionamientoTest {
         "13, 301, normal, false, 95.0",
         "14, 302, normal, false, 95.0"
     })
-    void testCasosFrontera299a302(int casoNum, int minutos, String tipoCliente, boolean boletoPerdido, double esperado) {
+    void testCasosFrontera299a302(int casoNum, int minutos, String tipoCliente, boolean boletoPerdido, double esperado) { //Viene de R7
         double resultado = sistema.calcularTotal(minutos, tipoCliente, boletoPerdido);
         assertEquals(esperado, resultado, 0.001, "Fallo en el Caso " + casoNum);
     }
 
 
     @Test
-    void testMinutoCero() {
+    void testMinutoCero() { //Viene de R4
         int minutos = 0;
         String tipoCliente = "normal";
         boolean boletoPerdido = false;
@@ -79,7 +79,7 @@ class EstacionamientoTest {
 
 
     @Test
-    void testBoletoPerdido() {
+    void testBoletoPerdido() { //Viene de R3
         int minutos = 5;
         String tipoCliente = "normal";
         boolean boletoPerdido = true;
@@ -89,7 +89,7 @@ class EstacionamientoTest {
 
 
     @Test
-    void testMinutosNegativos() {
+    void testMinutosNegativos() { //Viene de R1, R9 y R10
         int minutos = -16;
         String tipoCliente = "normal";
         boolean boletoPerdido = false;
@@ -102,7 +102,7 @@ class EstacionamientoTest {
 
 
     @Test
-    void testClienteEntradaInvalida() {
+    void testClienteEntradaInvalida() { //Viene de R2 y R11
         int minutos = 45;
         String tipoCliente = "cliente normal";
         boolean boletoPerdido = false;
@@ -115,7 +115,7 @@ class EstacionamientoTest {
 
 
     @Test
-    void testBoletoPerdidoClienteFrecuente() {
+    void testBoletoPerdidoClienteFrecuente() { //Viene de R3 y R8
         int minutos = 20;
         String tipoCliente = "frecuente";
         boolean boletoPerdido = true;
@@ -125,7 +125,7 @@ class EstacionamientoTest {
 
 
     @Test
-    void testMinutoCeroClienteFrecuente() {
+    void testMinutoCeroClienteFrecuente() { //Viene de R4, R8 y R9
         int minutos = 0;
         String tipoCliente = "frecuente";
         boolean boletoPerdido = false;
@@ -135,7 +135,7 @@ class EstacionamientoTest {
 
 
     @Test
-    void testBoletoPerdidoMuchosMinutos() {
+    void testBoletoPerdidoMuchosMinutos() { //Viene de R3
         int minutos = 10000;
         String tipoCliente = "normal";
         boolean boletoPerdido = true;
@@ -145,7 +145,7 @@ class EstacionamientoTest {
 
 
     @Test
-    void testCostoConDecimal() {
+    void testCostoConDecimal() { //Viene de R8
         int minutos = 301;
         String tipoCliente = "frecuente";
         boolean boletoPerdido = false;
@@ -155,7 +155,7 @@ class EstacionamientoTest {
 
 
     @Test
-    void testMinutosConDecimales() {
+    void testMinutosConDecimales() { //Viene de R1
         double minutos = 30.5;
         String tipoCliente = "normal";
         boolean boletoPerdido = false;
